@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Face AI",
   description: "Transform your appearance with AI",
   icons: {
-    icon: "/favicon.svg",
+    icon: "/favicon.png",
   },
 };
 
