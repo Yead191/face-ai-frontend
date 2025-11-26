@@ -8,7 +8,7 @@
 
 @layer utilities {
   .section-title {
-    @apply text-3xl lg:text-5xl font-bold mb-4 text-[#FFFFFF];
+    @apply text-3xl lg:text-5xl font-medium mb-4 text-[#FFFFFF];
   }
   .section-subtitle {
     @apply text-[#FFFFFF] text-[16px] lg:text-lg leading-relaxed;
@@ -67,4 +67,8 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+.boxShadow {
+  box-shadow: 0 0 20px 1px rgba(152, 16, 250, 0.3);
 }
