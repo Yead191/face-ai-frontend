@@ -2,6 +2,7 @@ import React from "react";
 import Banner from "./sections/Banner";
 import Features from "./sections/Features";
 import HowItWorks from "./sections/HowItWorks";
+import Pricing from "./sections/Pricing";
 
 export default function HomePage() {
   return (
@@ -9,6 +10,7 @@ export default function HomePage() {
       <Banner />
       <Features />
       <HowItWorks />
+      <Pricing />
     </section>
   );
 }
