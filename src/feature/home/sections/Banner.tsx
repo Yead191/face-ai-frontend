@@ -12,7 +12,7 @@ export default function Banner() {
         {/* Floating lightning  */}
         <div className="absolute top-[35%]  right-[40%] text-purple-400/20 animate-pulse">
           <Image
-            src={"/assets/icons/home/lightning.png"}
+            src={"/assets/icons/home/banner/lightning.png"}
             alt="icon"
             width={100}
             height={100}
@@ -22,7 +22,7 @@ export default function Banner() {
         {/* Floating star  */}
         <div className="absolute bottom-1/4 2xl:bottom-1/6 left-[42%] text-purple-400/20 animate-pulse">
           <Image
-            src={"/assets/icons/home/star.png"}
+            src={"/assets/icons/home/banner/star.png"}
             alt="icon"
             width={100}
             height={100}
