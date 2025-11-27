@@ -4,8 +4,13 @@ import { Collapse, ConfigProvider } from "antd";
 
 export default function FAQSection() {
   return (
-    <div className="max-w-6xl mx-auto px-4 md:px-4 py-8 pt-8 md:py-12 lg:pb-24">
-      <h1 className="section-title text-center mb-10!">FAQ</h1>
+    <div className="max-w-6xl mx-auto py-10 lg:py-20">
+      <div className="mb-12! text-center">
+        <h1 className="section-title  ">FAQ</h1>
+        <p className="section-subtitle">
+          Learn How Our Smart Matching Helps You
+        </p>
+      </div>
 
       <ConfigProvider
         theme={{
@@ -31,7 +36,7 @@ export default function FAQSection() {
         .custom-faq-collapse .ant-collapse-item {
           margin-bottom: 16px !important;
           background-color: transparent !important;
-          border: 2px solid #A855F780 !important;
+          border: 2px solid #a855f780 !important;
           border-radius: 8px !important;
         }
 
