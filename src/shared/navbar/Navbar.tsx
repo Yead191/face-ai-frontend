@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { MenuOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import { Drawer, ConfigProvider } from "antd";
@@ -10,109 +10,97 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 export default function Navbar() {
-  const [activeSection, setActiveSection] = useState("");
+  const [activePath, setActivePath] = useState<string>("#home");
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const lastScrollTop = useRef(0);
 
   useEffect(() => {
+    const currentHash = window.location.hash || "#home";
+    setActivePath(currentHash);
+  }, []);
+
+
+  useEffect(() => {
     const handleScroll = () => {
-      const scrollY = globalThis.scrollY;
+      const scrollY = window.scrollY;
+      const scrollPosition = scrollY + 120;
 
-      // Background change
-      const bannerHeight = document.getElementById("banner")?.offsetHeight || 0;
-      setIsScrolled(scrollY > bannerHeight - 80);
+      navItems.forEach((item) => {
+        const section = document.getElementById(item.href.substring(1));
+        if (section) {
+          const top = section.offsetTop - 120;
+          const height = section.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActivePath(item.href);
+          }
+        }
+      });
 
-      // Navbar hide / show
       if (scrollY > lastScrollTop.current && scrollY > 100) {
         setShowNavbar(false);
       } else {
         setShowNavbar(true);
       }
 
-      lastScrollTop.current = Math.max(0, scrollY);
+      lastScrollTop.current = Math.max(scrollY, 0);
     };
 
-    globalThis.addEventListener("scroll", handleScroll);
-    return () => globalThis.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Detect hash changes for active link highlight
-  useEffect(() => {
-    const updateActiveSection = () => {
-      const hash = globalThis.location.hash.replace("#", "");
-      if (hash) setActiveSection(hash);
-    };
 
-    updateActiveSection();
-
-    globalThis.addEventListener("hashchange", updateActiveSection);
-    return () =>
-      globalThis.removeEventListener("hashchange", updateActiveSection);
-  }, []);
-
-  // Scroll to correct section dynamically
-  const handleScrollToSection = (e: any, id: any) => {
+  const handleNavScroll = useCallback((e: React.MouseEvent, path: string) => {
     e.preventDefault();
+    const id = path.substring(1);
+    const section = document.getElementById(id);
 
-    document.querySelector(id)?.scrollIntoView({
-      behavior: "smooth",
-    });
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      setActivePath(path);
+      window.location.hash = path;
+    }
+  }, []);
 
-    setActiveSection(id.replace("#", ""));
-    globalThis.location.hash = id;
-  };
 
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: false,
-      mirror: false,
-    });
-
-    // refresh AOS after images load or DOM changes
-    const handleResize = () => AOS.refresh();
-    globalThis.addEventListener("resize", handleResize);
-
-    return () => {
-      globalThis.removeEventListener("resize", handleResize);
-    };
+    AOS.init({ duration: 1000, once: false });
+    const refresh = () => AOS.refresh();
+    window.addEventListener("resize", refresh);
+    return () => window.removeEventListener("resize", refresh);
   }, []);
 
   return (
     <nav
-      className={`sticky  top-0 z-50 w-full transition-all duration-500 
-        bg-[#000000] ${showNavbar ? "translate-y-0" : "-translate-y-28"}
-      `}
+      className={`sticky top-0 z-50 w-full transition-all duration-500 bg-[#000000]
+        ${showNavbar ? "translate-y-0" : "-translate-y-28"}`}
     >
       <div className="container py-5 transition-colors duration-300">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="shrink-0 ">
+          <Link href="/" className="shrink-0">
             <Image
               src="/Logo.png"
-              alt="Face AI Logo"
+              alt="Logo"
               width={180}
               height={80}
-              className="h-8 lg:h-10  w-fit"
+              className="h-8 lg:h-10 w-fit"
             />
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-8">
             {navItems.map((item, index) => (
               <a
                 key={index}
                 href={item.href}
-                onClick={(e) => handleScrollToSection(e, item.href)}
-                className={`text-sm transition-all duration-300 
-                  ${
-                    activeSection === item.href.replace("#", "")
-                      ? "font-semibold text-white"
-                      : "text-white/80 hover:text-white/70"
-                  }
-                `}
+                onClick={(e) => handleNavScroll(e, item.href)}
+                className={`text-sm transition-all duration-300 ${
+                  activePath === item.href
+                    ? "font-semibold text-white"
+                    : "text-white/80 hover:text-white/70"
+                }`}
               >
                 {item.labelKey}
               </a>
@@ -121,12 +109,12 @@ export default function Navbar() {
 
           {/* Right Section */}
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-4">
-              <Link href={"/auth/login font-medium"}>Sign In</Link>
-              <PrimaryButton>Get Started</PrimaryButton>
-            </div>
+            <Link href="/auth/login" className="font-medium">
+              Sign In
+            </Link>
+            <PrimaryButton>Get Started</PrimaryButton>
 
-            {/* Mobile Menu Icon */}
+            {/* Mobile Menu */}
             <button
               className="lg:hidden text-xl"
               onClick={() => setDrawerOpen(true)}
@@ -137,7 +125,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Drawer for Mobile */}
+      {/* Drawer (Mobile) */}
       <ConfigProvider>
         <Drawer
           title={<span className="font-semibold text-lg">Menu</span>}
@@ -152,16 +140,14 @@ export default function Navbar() {
                 key={index}
                 href={item.href}
                 onClick={(e) => {
-                  handleScrollToSection(e, item.href);
+                  handleNavScroll(e, item.href);
                   setDrawerOpen(false);
                 }}
-                className={`text-base transition-all 
-                  ${
-                    activeSection === item.href.replace("#", "")
-                      ? "font-semibold pl-4 py-2 rounded-lg bg-primary text-white"
-                      : "hover:text-primary text-black"
-                  }
-                `}
+                className={`text-base transition-all ${
+                  activePath === item.href
+                    ? "font-semibold pl-4 py-2 rounded-lg bg-primary text-white"
+                    : "hover:text-primary text-black"
+                }`}
               >
                 {item.labelKey}
               </a>
