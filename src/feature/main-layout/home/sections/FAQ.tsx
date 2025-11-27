@@ -4,7 +4,7 @@ import { Collapse, ConfigProvider } from "antd";
 
 export default function FAQSection() {
   return (
-    <div className="max-w-6xl mx-auto py-10 lg:py-20">
+    <div id="faq" className="max-w-6xl mx-auto py-10 lg:py-20">
       <div className="mb-12! text-center">
         <h1 className="section-title  ">FAQ</h1>
         <p className="section-subtitle">

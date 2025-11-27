@@ -1,5 +1,5 @@
 import pricingPlans from '@/constants/home/pricingPlan';
-import PlanCard from '@/feature/home/sections/pricing/PlanCard';
+import PlanCard from '@/feature/main-layout/home/sections/pricing/PlanCard';
 import React from 'react';
 
 const Subscription = () => {
