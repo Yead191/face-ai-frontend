@@ -9,7 +9,7 @@ const scoreData = [
 ];
 
 const detailedMetrics = [
-  { name: 'Skin Quality', percentage: 87, change: '+0.3' },
+  { name: 'Skin Quality', percentage: 87, change: '+0.3',  },
   { name: 'Cheekbone Structure', percentage: 85, change: '+0.3' },
   { name: 'Jawline Definition', percentage: 94, change: '+0.3' },
   { name: 'Eye Area', percentage: 91, change: '+0.3' },
