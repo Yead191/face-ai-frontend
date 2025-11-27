@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import { ArrowRight, Star } from "lucide-react";
 import PrimaryButton from "@/shared/buttons/PrimaryButton";
@@ -36,7 +35,7 @@ export default function Banner() {
         {/* Left content */}
         <div className="col-span-2">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-[#F3E8FF] border border-purple-500/30">
+          <div data-aos="fade-up" className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-[#F3E8FF] border border-purple-500/30">
             <Star className="lg:w-4 lg:h-4 w-3 h-3 text-[#8200DB] fill-current" />
             <span className="text-xs lg:text-sm font-medium text-[#8200DB]">
               Transform Your Appearance
@@ -44,7 +43,7 @@ export default function Banner() {
           </div>
 
           {/* Heading */}
-          <div className="mb-4">
+          <div data-aos="fade-up" data-aos-delay="100" className="mb-4">
             <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight max-w-[800px] 2xl:max-w-[1000px] ">
               Transform Your Appearance With
               <span className="bg-linear-to-r from-[#9810FA] to-[#E60076] bg-clip-text text-transparent">
@@ -55,13 +54,13 @@ export default function Banner() {
           </div>
 
           {/* Description */}
-          <p className="lg:text-lg text-[#FFFFFF] mb-8 lg:mb-12 max-w-2xl leading-relaxed">
+          <p data-aos="fade-up" data-aos-delay="150" className="lg:text-lg text-[#FFFFFF] mb-8 lg:mb-12 max-w-2xl leading-relaxed">
             Start your hair and skincare journey with AI analysis and
             personalized recommendations to naturally enhance your features.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex items-center justify-between md:justify-start gap-4 mb-10 ">
+          <div data-aos="fade-up" data-aos-delay="200" className="flex items-center justify-between md:justify-start gap-4 mb-10 ">
             <PrimaryButton className="md:px-8! text-lg! md:h-[60px]!">
               Start Free Analysis
             </PrimaryButton>
@@ -72,7 +71,7 @@ export default function Banner() {
           </div>
 
           {/* Stats */}
-          <div className="flex items-center gap-2 lg:gap-6 border-t border-[#C6D2FF]/40 pt-7 max-w-md">
+          <div data-aos="fade-up" data-aos-delay="250" className="flex items-center gap-2 lg:gap-6 border-t border-[#C6D2FF]/40 pt-7 max-w-md">
             {stats.map((item, i) => (
               <div
                 key={i}

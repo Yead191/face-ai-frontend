@@ -6,6 +6,8 @@ import { Drawer, ConfigProvider } from "antd";
 import navItems from "@/constants/navItem";
 import Link from "next/link";
 import PrimaryButton from "../buttons/PrimaryButton";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("");
@@ -61,6 +63,22 @@ export default function Navbar() {
     setActiveSection(id.replace("#", ""));
     globalThis.location.hash = id;
   };
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      mirror: false,
+    });
+
+    // refresh AOS after images load or DOM changes
+    const handleResize = () => AOS.refresh();
+    globalThis.addEventListener("resize", handleResize);
+
+    return () => {
+      globalThis.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <nav
