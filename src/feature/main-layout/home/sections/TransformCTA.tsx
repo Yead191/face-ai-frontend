@@ -1,7 +1,11 @@
+"use client";
+import AnalysisModal from "@/shared/analysis-modal/AnalysisModal";
 import { Button } from "antd";
 import { Sparkles } from "lucide-react";
+import { useState } from "react";
 
-export default async function TransformCTA() {
+export default function TransformCTA() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <section className=" bg-linear-to-r from-[#1869CC] via-[#742AFE] to-[#E30BEB]">
       <div className=" flex flex-col justify-center items-center py-20 container">
@@ -32,6 +36,7 @@ export default async function TransformCTA() {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
           <Button
+            onClick={() => setIsOpen(true)}
             size="large"
             className="bg-[#C800DE]! border-0! text-white! h-[60px]!"
           >
@@ -46,6 +51,7 @@ export default async function TransformCTA() {
           </p>
         </div>
       </div>
+      <AnalysisModal isOpen={isOpen} setIsOpen={setIsOpen} />
     </section>
   );
 }
