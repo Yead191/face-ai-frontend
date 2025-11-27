@@ -63,9 +63,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Empty Column */}
-          <div className="col-span-1"></div>
-
           {/* Legal Links */}
           <div className="col-span-1">
             <h4 className="text-white font-semibold mb-6">Legal</h4>

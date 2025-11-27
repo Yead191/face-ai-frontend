@@ -16,9 +16,9 @@ const productLinks = [
 ];
 
 const legalLinks = [
-  { name: "Privacy", href: "#" },
-  { name: "Terms", href: "#" },
-  { name: "Cookies", href: "#" },
+  { name: "Privacy", href: "/privacy" },
+  { name: "Terms", href: "/terms" },
+  { name: "Cookies", href: "/cookies" },
 ];
 
 export { socialLinks, productLinks, legalLinks };
