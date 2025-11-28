@@ -1,0 +1,43 @@
+import { ConfigProvider } from "antd";
+import Image from "next/image";
+import React from "react";
+
+export default function layout({ children }: { children: React.ReactNode }) {
+  return (
+    <section className="grid grid-cols-1 md:grid-cols-2 gap-2 items-center min-h-screen max-w-6xl mx-auto py-8">
+      <div className="  flex justify-end items-end">
+        <Image
+          src={"/assets/images/auth/auth-img.png"}
+          height={600}
+          width={800}
+          className="w-full h-full object-contain hidden md:block"
+          alt="auth image"
+        />
+      </div>
+      <div className="flex flex-col items-center justify-between  bg-[#0C0C0D] py-12 px-4 md:px-5 h-full ">
+        <ConfigProvider
+          theme={{
+            components: {
+              Select: {
+                clearBg: "transparent",
+                selectorBg: "#38115f",
+                activeBorderColor: "#38115f",
+                activeOutlineColor: "transparent",
+                optionSelectedBg: "#7c7c7f",
+              },
+            },
+            token: {
+              colorPrimary: "#A855F7",
+              colorIcon: "white",
+              colorBgBase: "transparent",
+              colorText: "white",
+              colorTextPlaceholder: "#9CA3AF",
+            },
+          }}
+        >
+          {children}
+        </ConfigProvider>
+      </div>
+    </section>
+  );
+}
