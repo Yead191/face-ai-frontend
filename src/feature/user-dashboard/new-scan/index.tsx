@@ -1,9 +1,10 @@
 import React from 'react';
+import StartAnalysis from './StartAnalysis';
 
 const NewScan = () => {
     return (
-        <div>
-            this is new scan page
+        <div className='w-full h-[calc(100vh-140px)]'>
+           <StartAnalysis />
         </div>
     );
 };

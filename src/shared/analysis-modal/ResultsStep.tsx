@@ -13,7 +13,7 @@ interface AnalysisResult {
 
 interface ResultsStepProps {
   results: AnalysisResult;
-  onClose: () => void;
+  onClose ?: () => void;
 }
 
 export function ResultsStep({ results, onClose }: ResultsStepProps) {
