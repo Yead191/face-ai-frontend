@@ -17,7 +17,7 @@ export default function Navbar() {
   const [showNavbar, setShowNavbar] = useState(true);
   const lastScrollTop = useRef(0);
 
-  const router = useRouter()
+  const router = useRouter();
 
   useEffect(() => {
     const currentHash = window.location.hash || "#home";
@@ -100,7 +100,7 @@ export default function Navbar() {
               <a
                 key={index}
                 href={item.href}
-                onClick={(e) => handleNavScroll(e, item.href)}
+                // onClick={(e) => handleNavScroll(e, item.href)}
                 className={`text-sm transition-all duration-300 ${
                   activePath === item.href
                     ? "font-semibold text-white"
@@ -142,38 +142,42 @@ export default function Navbar() {
           styles={{
             body: {
               padding: 0,
-              background: "#1C1C1E", 
-              
+              background: "#1C1C1E",
             },
           }}
         >
           <div className="relative h-full pt-8  w-full">
             <div className="flex flex-col h-full">
-              <div className="font-semibold text-xl text-white pb-2 ps-5 w-full border-b border-[#444447]">Menu</div>
+              <div className="font-semibold text-xl text-white pb-2 ps-5 w-full border-b border-[#444447]">
+                Menu
+              </div>
 
               <div className="flex flex-col gap-y-4 overflow-y-auto w-full ps-5 pt-6 ">
-                {navItems.map((item, index) => (
-                  <div
+                {navItems?.map((item, index) => (
+                  <Link
                     key={index}
-                    // href={item.href}
+                    href={item.href}
                     onClick={(e) => {
-                      handleNavScroll(e, item.href);
+                      // handleNavScroll(e, item.href);
                       setDrawerOpen(false);
                     }}
-                    className={`text-base transition-all   ${
+                    className={`text-base! transition-all!   ${
                       activePath === item.href
-                        ? "font-semibold  rounded-lg text-primary "
-                        : "text-white "
+                        ? "font-semibold!  rounded-lg! text-primary!  "
+                        : "text-white! "
                     }`}
                   >
                     {item.labelKey}
-                  </div>
+                  </Link>
                 ))}
               </div>
 
               <div className="py-3  absolute bottom-0 w-full ">
-                <div 
-                  onClick={()=> {onCloseDrawer(); router.push("/auth/login")}}
+                <div
+                  onClick={() => {
+                    onCloseDrawer();
+                    router.push("/auth/login");
+                  }}
                   className="flex items-center gap-x-2 text-red-500 hover:text-red-600 font-medium ps-5"
                 >
                   <IoIosLogOut size={18} />
