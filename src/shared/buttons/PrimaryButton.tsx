@@ -5,13 +5,16 @@ export default function PrimaryButton({
   children,
   className,
   height = 36,
+  onClick,
 }: {
   children: React.ReactNode;
   className?: string;
   height?: number;
+  onClick?: () => void;
 }) {
   return (
     <Button
+      onClick={onClick}
       style={{
         height: height,
       }}
