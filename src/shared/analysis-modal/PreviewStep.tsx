@@ -2,6 +2,7 @@
 
 import { BEST_PRACTICES } from "@/constants/home/analysis";
 import { Check } from "lucide-react";
+import Image from "next/image";
 
 interface PreviewStepProps {
   image: string;
@@ -20,10 +21,12 @@ export function PreviewStep({ image, onAnalyze, onRemove }: PreviewStepProps) {
       </p>
 
       <div className="relative rounded-xl overflow-hidden mb-6 bg-linear-to-br from-[#9810FA]/10 to-[#E60076]/10 aspect-video">
-        <img
+        <Image
           src={image || "/placeholder.svg"}
           alt="Uploaded face"
-          className="w-full h-full object-cover "
+          className="w-full h-[300px] object-cover "
+          height={500}
+          width={900}
         />
         <button
           onClick={onRemove}

@@ -6,9 +6,9 @@ import ScoreHistory from './ScoreHistory';
 
 const Progress = () => {
   return (
-    <div className="min-h-screen  p-6">
-      <div className="max-w-[87%] mx-auto space-y-4">
-        <div className="grid grid-cols-4 gap-4">
+    <div className="min-h-screen  md:p-6 p-0">
+      <div className="md:max-w-[87%] mx-auto space-y-4">
+        <div className="grid md:grid-cols-4 grid-cols-2 gap-4">
           <StatCard
             icon={<TrendingUp className="w-5 h-5" />}
             value="+3.5"
@@ -40,13 +40,13 @@ const Progress = () => {
         </div>
 
         <div className="bg-black/40 backdrop-blur-sm  rounded-2xl p-6 border border-[#9810FA85]">
-          <h2 className="text-white text-2xl font-medium mb-6">Score History</h2>
+          <h2 className="text-white md:text-2xl text-xl font-medium mb-6">Score History</h2>
           <ScoreHistory />
         </div>
 
-        <div className='grid grid-cols-2'>
+        <div className='grid md:grid-cols-2 grid-cols-1'>
           <div className="bg-black/40 backdrop-blur-sm  rounded-2xl p-6 border border-[#9810FA85] col-span-1">
-            <h2 className="text-white text-2xl font-medium mb-6">Detailed Metrics</h2>
+            <h2 className="text-white md:text-2xl text-xl font-medium mb-6">Detailed Metrics</h2>
             <div className="space-y-6">
               {detailedMetrics.map((metric, index) => (
                 <MetricRow key={index} {...metric} />

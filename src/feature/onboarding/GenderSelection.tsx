@@ -5,7 +5,7 @@ import { Form, Radio, Button } from "antd";
 import { useRouter } from "next/navigation";
 
 export default function GenderForm() {
-  const [gender, setGender] = useState("male");
+  const [gender, setGender] = useState("");
   const router = useRouter();
 
   const goNext = () => {

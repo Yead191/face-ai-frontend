@@ -16,7 +16,7 @@ export function AnalyzingStep({ image }: AnalyzingStepProps) {
         <img
           src={image || "/placeholder.svg"}
           alt="Analyzing face"
-          className="w-full h-full object-cover opacity-50"
+          className="w-full h-[400px] object-cover opacity-50"
         />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative w-20 h-20">
