@@ -4,7 +4,7 @@ import React from "react";
 
 export default function AuthLogo() {
   return (
-    <Link href={"/"} className="flex items-center justify-center gap-2">
+    <Link href={"/"} className="flex items-center justify-center gap-2 ">
       <Image
         src={"/favicon.png"}
         height={100}

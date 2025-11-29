@@ -5,7 +5,7 @@ import React from "react";
 export default function layout({ children }: { children: React.ReactNode }) {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 gap-2 items-center min-h-screen md:max-w-6xl mx-auto md:py-8">
-      <div className="  md:flex justify-end items-end hidden ">
+      <div className="  md:flex justify-end items-end hidden  ">
         <Image
           src={"/assets/images/auth/auth-img.png"}
           height={600}
