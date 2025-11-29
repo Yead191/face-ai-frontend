@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ArrowRight, Star } from "lucide-react";
 import PrimaryButton from "@/shared/buttons/PrimaryButton";
 import stats from "@/constants/home/bannerStats";
+import BannerBtn from "./BannerBtn";
 
 export default function Banner() {
   return (
@@ -35,7 +36,10 @@ export default function Banner() {
         {/* Left content */}
         <div className="col-span-2">
           {/* Badge */}
-          <div data-aos="fade-up" className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-[#F3E8FF] border border-purple-500/30">
+          <div
+            data-aos="fade-up"
+            className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-[#F3E8FF] border border-purple-500/30"
+          >
             <Star className="lg:w-4 lg:h-4 w-3 h-3 text-[#8200DB] fill-current" />
             <span className="text-xs lg:text-sm font-medium text-[#8200DB]">
               Transform Your Appearance
@@ -54,16 +58,22 @@ export default function Banner() {
           </div>
 
           {/* Description */}
-          <p data-aos="fade-up" data-aos-delay="150" className="lg:text-lg text-[#FFFFFF] mb-8 lg:mb-12 max-w-2xl leading-relaxed">
+          <p
+            data-aos="fade-up"
+            data-aos-delay="150"
+            className="lg:text-lg text-[#FFFFFF] mb-8 lg:mb-12 max-w-2xl leading-relaxed"
+          >
             Start your hair and skincare journey with AI analysis and
             personalized recommendations to naturally enhance your features.
           </p>
 
           {/* CTA Buttons */}
-          <div data-aos="fade-up" data-aos-delay="200" className="flex items-center justify-between md:justify-start gap-4 mb-10 ">
-            <PrimaryButton className="md:px-8! text-lg! md:h-[60px]!">
-              Start Free Analysis
-            </PrimaryButton>
+          <div
+            data-aos="fade-up"
+            data-aos-delay="200"
+            className="flex items-center justify-between md:justify-start gap-4 mb-10 "
+          >
+            <BannerBtn />
             <button className="w-full h-10 md:w-auto md:px-8 md:py-3 border border-[#9810FA] lg:h-[60px] text-white font-medium rounded-lg hover:bg-white/5 transition-all duration-200 flex items-center justify-center gap-2">
               Watch Demo
               <ArrowRight size={18} className="hidden md:block" />
@@ -71,7 +81,11 @@ export default function Banner() {
           </div>
 
           {/* Stats */}
-          <div data-aos="fade-up" data-aos-delay="250" className="flex items-center gap-2 lg:gap-6 border-t border-[#C6D2FF]/40 pt-7 max-w-md">
+          <div
+            data-aos="fade-up"
+            data-aos-delay="250"
+            className="flex items-center gap-2 lg:gap-6 border-t border-[#C6D2FF]/40 pt-7 max-w-md"
+          >
             {stats.map((item, i) => (
               <div
                 key={i}
