@@ -1,5 +1,5 @@
 import React from "react";
-import Banner from "./sections/Banner";
+import Banner from "./sections/banner/Banner";
 import Features from "./sections/Features";
 import HowItWorks from "./sections/HowItWorks";
 import Pricing from "./sections/pricing/Pricing";
